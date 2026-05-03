@@ -1,5 +1,7 @@
 import os
 from pathlib import Path
+
+import dj_database_url
 from django.utils.translation import gettext_lazy as _
 
 
@@ -98,15 +100,22 @@ WSGI_APPLICATION = 'config.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'my_blog_db',
+#         'USER': 'anvar',
+#         'PASSWORD': 'Qwerty123$', # O'zingiz o'rnatgan parolni yozing
+#         'HOST': '127.0.0.1',
+#         'PORT': '5433',
+#     }
+# }
+
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'my_blog_db',
-        'USER': 'anvar',
-        'PASSWORD': 'Qwerty123$', # O'zingiz o'rnatgan parolni yozing
-        'HOST': '127.0.0.1',
-        'PORT': '5433',
-    }
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL', 'postgresql://anvar:Qwerty123$@127.0.0.1:5433/my_blog_db')
+    )
 }
 
 
