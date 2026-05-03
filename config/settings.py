@@ -18,8 +18,11 @@ SECRET_KEY = 'django-insecure-8!*w7zylcq!!)w2*82jz)u&f0$^dr&n#*rh!yxd5taqzmxx5n=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [
+    'my-blog-2-hngy.onrender.com',  # Render bergan asosiy URL
+    '127.0.0.1',                   # Localda ishlashi uchun
+    'localhost',
+]
 
 LANGUAGE_CODE = 'uz'
 
