@@ -16,15 +16,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-8!*w7zylcq!!)w2*82jz)u&f0$^dr&n#*rh!yxd5taqzmxx5n='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+
+DEBUG = os.environ.get('RENDER', False) == False
 
 
 # Render bergan domenni ro'yxatga qo'shamiz
-ALLOWED_HOSTS = [
-    'my-blog-2-hngy.onrender.com',
-    '127.0.0.1',
-    'localhost'
-]
+
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+
+# Render-dan kelayotgan har qanday domenni avtomatik qabul qilish
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 LANGUAGE_CODE = 'uz'
 
@@ -60,6 +64,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -124,6 +129,8 @@ DATABASES = {
 }
 
 
+
+
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
 
@@ -183,3 +190,5 @@ CACHES = {
         "LOCATION": "rediss://your-redis-url",
     }
 }
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
