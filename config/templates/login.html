@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center px-2">
+    <div class="col-12 col-sm-10 col-md-8 col-lg-5 col-xl-4">
+        <div class="card shadow-lg border-0 mt-3 mt-md-5 rounded-4 overflow-hidden">
+            <div class="card-body p-4 p-md-5">
+                <div class="text-center mb-4">
+                    <h3 class="fw-bold text-dark">Tizimga kirish 🔑</h3>
+                    <p class="text-muted small">Xush kelibsiz! Ma'lumotlaringizni kiriting.</p>
+                </div>
+
+                <form method="post" class="custom-form">
+                    {% csrf_token %}
+                    <div class="mb-4">
+                        {{ form.as_p }}
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 py-3 fw-bold rounded-pill shadow-sm transition-btn">
+                        Kirish
+                    </button>
+                </form>
+
+                <div class="text-center mt-3">
+                    <a href="{% url 'reset_password' %}" class="text-decoration-none text-muted small hover-link">
+                        Parolni unutdingizmi?
+                    </a>
+                </div>
+
+                <hr class="my-4 text-muted opacity-25">
+
+                <div class="text-center">
+                    <small class="text-muted">
+                        Profilingiz yo'qmi?
+                        <a href="{% url 'register' %}" class="fw-bold text-primary text-decoration-none">Ro'yxatdan o'ting</a>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Inputlar uchun zamonaviy stil */
+    .custom-form p label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        font-size: 0.85rem;
+        color: #495057;
+    }
+
+    .custom-form p input {
+        width: 100%;
+        padding: 12px 16px;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        outline: none;
+        transition: all 0.3s;
+        background-color: #f8f9fa;
+    }
+
+    .custom-form p input:focus {
+        border-color: #667eea;
+        background-color: #fff;
+        box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+    }
+
+    .transition-btn:active {
+        transform: scale(0.98);
+    }
+
+    .hover-link:hover {
+        color: #667eea !important;
+        text-decoration: underline !important;
+    }
+</style>
+{% endblock %}

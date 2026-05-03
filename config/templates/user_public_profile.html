@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row g-4">
+    <div class="col-md-4">
+        <div class="card shadow-sm border-0 p-4 text-center">
+            <div class="mb-3">
+                {% if profile.avatar %}
+                    <img src="{{ profile.avatar.url }}" class="rounded-circle shadow" style="width: 150px; height: 150px; object-fit: cover;">
+                {% else %}
+                    <img src="https://ui-avatars.com/api/?name={{ target_user.username }}" class="rounded-circle">
+                {% endif %}
+            </div>
+            <h4 class="fw-bold">{{ target_user.username }}</h4>
+            <hr>
+
+            <div class="text-start">
+                <h6 class="fw-bold mb-3"><i class="bi bi-chat-left-text me-2"></i>Fikrlar</h6>
+
+                {% if user.is_authenticated %}
+                <form method="post" class="mb-3">
+                    {% csrf_token %}
+                    <textarea name="comment_text" class="form-control form-control-sm mb-2" placeholder="Izoh yozing..." required></textarea>
+                    <button type="submit" class="btn btn-primary btn-sm w-100">Yuborish</button>
+                </form>
+                {% endif %}
+
+                <div class="comments-scroll" style="max-height: 400px; overflow-y: auto;">
+                    {% for comment in comments %}
+                        <div class="p-2 mb-2 bg-light rounded small border-start border-primary border-4">
+                            <div class="d-flex justify-content-between">
+                                <span class="fw-bold">{{ comment.author.username }}</span>
+                                <span class="text-muted" style="font-size: 0.7rem;">{{ comment.created_at|date:"d.m.Y" }}</span>
+                            </div>
+                            <p class="mb-0 mt-1">{{ comment.text }}</p>
+                        </div>
+                    {% empty %}
+                        <p class="text-muted small">Hali hech kim fikr qoldirmagan.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <h4 class="fw-bold mb-4">{{ target_user.username }}ning postlari</h4>
+        <div class="row g-3">
+            {% for post in user_posts %}
+            <div class="col-12">
+                <div class="card border-0 shadow-sm p-3">
+                    <h5 class="fw-bold"><a href="{% url 'post_detail' post.pk %}" class="text-dark text-decoration-none">{{ post.title }}</a></h5>
+
+                    <div class="d-flex align-items-center mt-2">
+                        <a href="{% url 'like_post' post.pk %}" class="btn btn-sm rounded-pill me-3 {% if user in post.likes.all %}btn-danger{% else %}btn-outline-danger{% endif %}">
+                            <i class="bi bi-heart-fill"></i> {{ post.likes.count }}
+                        </a>
+                        <span class="text-muted small"><i class="bi bi-eye me-1"></i> {{ post.views_count }}</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

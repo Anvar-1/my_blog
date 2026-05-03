@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="container profile-container py-5">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-warning alert-dismissible fade show rounded-4 shadow-sm mb-4" role="alert">
+                <i class="bi bi-info-circle me-2"></i> {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <div class="row g-4">
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+            <div class="profile-sidebar-wrapper">
+                <div class="card shadow-sm border-0 text-center p-4 rounded-4 bg-white">
+                    <div class="position-relative d-inline-block mx-auto mb-3">
+                        {% if profile.avatar %}
+                            <img src="{{ profile.avatar.url }}" class="rounded-circle shadow-sm" style="width: 150px; height: 150px; object-fit: cover; border: 4px solid white;">
+                        {% else %}
+                            <img src="https://ui-avatars.com/api/?name={{ user.username }}&background=667eea&color=fff&size=150" class="rounded-circle shadow-sm">
+                        {% endif %}
+
+                        <form method="post" enctype="multipart/form-data" id="avatarForm" class="position-absolute bottom-0 end-0">
+                            {% csrf_token %}
+                            <label for="avatarInput" class="btn btn-primary btn-sm rounded-circle shadow-sm d-flex align-items-center justify-content-center" style="width: 38px; height: 38px; cursor: pointer;">
+                                <i class="bi bi-camera-fill"></i>
+                            </label>
+                            <input type="file" name="avatar" id="avatarInput" hidden onchange="document.getElementById('avatarForm').submit();">
+                        </form>
+                    </div>
+
+                    <div class="d-flex align-items-center justify-content-center gap-2 mb-1">
+                        <h3 class="fw-bold mb-0">{{ user.username }}</h3>
+                        <a href="{% url 'edit_profile' %}" class="text-primary" title="{% translate 'Edit Profile' %}">
+                            <i class="bi bi-pencil-square fs-5"></i>
+                        </a>
+                    </div>
+
+                    <p class="text-muted small mb-3">{% translate "Joined date" %}: {{ user.date_joined|date:"d.m.Y" }}</p>
+
+                    <div class="row mt-3 border-top pt-3 g-0">
+                        <div class="col-6 border-end">
+                            <h5 class="fw-bold mb-0 text-primary">{{ user_posts.count }}</h5>
+                            <small class="text-muted">{% translate "Posts" %}</small>
+                        </div>
+                        <div class="col-6">
+                            <h5 class="fw-bold mb-0 text-success">{{ total_views }}</h5>
+                            <small class="text-muted">{% translate "Views" %}</small>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 d-grid gap-2">
+                        <a href="{% url 'create_post' %}" class="btn btn-primary rounded-pill fw-bold py-2">
+                            <i class="bi bi-plus-lg me-1"></i> {% translate "New post" %}
+                        </a>
+                        <!-- Sidebar tahrirlash tugmasi -->
+                        <a href="{% url 'edit_profile' %}" class="btn btn-outline-secondary rounded-pill fw-bold py-2">
+                            <i class="bi bi-person-gear me-1"></i> {% translate "Edit Profile" %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Postlar va Izohlar qismi o'zgarishsiz qoladi... -->
+        <div class="col-lg-8">
+            <div class="card shadow-sm border-0 p-4 rounded-4 mb-5">
+                <h4 class="fw-bold mb-4 d-flex align-items-center">
+                    <i class="bi bi-grid-3x3-gap me-2 text-primary"></i> {% translate "My posts" %}
+                </h4>
+
+                <div class="list-group list-group-flush">
+                    {% for post in user_posts %}
+                        <div class="list-group-item d-flex justify-content-between align-items-center px-0 py-3 border-bottom transition-hover bg-transparent">
+                            <div class="d-flex align-items-center">
+                                <div class="rounded-3 bg-primary bg-opacity-10 me-3 d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                    <i class="bi bi-file-earmark-text text-primary fs-4"></i>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0 fw-bold">
+                                        <a href="{% url 'post_detail' post.pk %}" class="text-dark text-decoration-none hover-blue">
+                                            {{ post.title|truncatechars:45 }}
+                                        </a>
+                                    </h6>
+                                    <small class="text-muted">{{ post.created_at|date:"d-M, Y" }}</small>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="badge rounded-pill bg-light text-dark border me-2">
+                                    <i class="bi bi-eye text-primary me-1"></i> {{ post.views_count }}
+                                </span>
+                                <div class="btn-group shadow-sm rounded-3 overflow-hidden">
+                                    <a href="{% url 'edit_post' post.pk %}" class="btn btn-sm btn-white border"><i class="bi bi-pencil text-warning"></i></a>
+                                    <form action="{% url 'delete_post' post.pk %}" method="POST" class="d-inline m-0 delete-form">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-sm btn-white border delete-btn">
+                                            <i class="bi bi-trash text-danger"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    {% empty %}
+                        <div class="text-center py-5">
+                            <i class="bi bi-journal-x display-4 text-muted opacity-25"></i>
+                            <p class="text-muted mt-2">{% translate "No posts created yet." %}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Izohlar -->
+            <div>
+                <h4 class="fw-bold mb-4 d-flex align-items-center">
+                    <i class="bi bi-chat-left-text me-2 text-primary"></i> {% translate "Comments on my profile" %}
+                </h4>
+                {% for comment in comments %}
+                    <div class="card border-0 shadow-sm rounded-4 mb-3 p-3 animate-fade-in border-start border-primary border-4">
+                        <div class="d-flex align-items-start">
+                            {% if comment.author.profile.avatar %}
+                                <img src="{{ comment.author.profile.avatar.url }}" class="rounded-circle me-3" style="width: 45px; height: 45px; object-fit: cover;">
+                            {% else %}
+                                <div class="avatar-circle-sm me-3">{{ comment.author.username|first|upper }}</div>
+                            {% endif %}
+                            <div class="flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h6 class="fw-bold mb-0 text-dark">{{ comment.author.username }}</h6>
+                                    <small class="text-muted" style="font-size: 0.75rem;">{{ comment.created_at|timesince }} {% translate "ago" %}</small>
+                                </div>
+                                <p class="text-secondary mt-1 mb-0 small">{{ comment.text }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% empty %}
+                    <div class="card border-0 shadow-sm rounded-4 text-center py-5">
+                        <i class="bi bi-chat-dots-fill display-4 text-muted opacity-25"></i>
+                        <p class="text-muted mt-3">{% translate "No comments yet." %}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CSS va JS avvalgi holaticha qoladi -->
+<style>
+    .profile-container { min-height: 80vh; margin-bottom: 80px; }
+    .profile-sidebar-wrapper { position: sticky; top: 90px; height: fit-content; z-index: 10; }
+    .avatar-circle-sm { width: 45px; height: 45px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+    .transition-hover:hover { background-color: #f8f9fa !important; }
+    .hover-blue:hover { color: #667eea !important; }
+    .btn-white { background-color: white; }
+    @media (max-width: 991px) { .profile-sidebar-wrapper { position: static !important; margin-bottom: 30px; } }
+</style>
+
+<script>
+    document.querySelectorAll('.delete-form').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            if (!confirm("{% translate 'Haqiqatan ham ushbu postni o\'chirmoqchimisiz?' %}")) {
+                e.preventDefault();
+            }
+        });
+    });
+</script>
+{% endblock %}

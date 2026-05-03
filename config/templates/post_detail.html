@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="row justify-content-center mb-5">
+    <div class="col-md-9">
+        <div class="bg-white p-4 shadow-sm rounded-4">
+            <!-- 1. Sarlavha va boshqaruv tugmalari -->
+            <div class="d-flex justify-content-between align-items-start mb-3">
+                <h1 class="display-5 mb-0 fw-bold text-dark">{{ post.title }}</h1>
+                {% if post.author == user %}
+                    <div class="btn-group shadow-sm">
+                        <a href="{% url 'edit_post' post.pk %}" class="btn btn-outline-warning btn-sm">
+                            <i class="bi bi-pencil"></i>
+                        </a>
+                        <form action="{% url 'delete_post' post.pk %}" method="POST" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-outline-danger btn-sm"
+                                    onclick="return confirm('{% translate "Haqiqatdan ham o\'chirmoqchimisiz?" %}')">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </form>
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- 2. Ma'lumotlar (Author, Date, Views) -->
+            <div class="d-flex align-items-center text-muted mb-4 border-bottom pb-2">
+                <a href="{% url 'user_public_profile' post.author.username %}" class="author-link text-decoration-none text-muted me-3">
+                    {% if post.author.profile.avatar %}
+                        <img src="{{ post.author.profile.avatar.url }}" class="rounded-circle me-2 border" style="width: 28px; height: 28px; object-fit: cover;">
+                    {% else %}
+                        <i class="bi bi-person-circle me-1"></i>
+                    {% endif %}
+                    {{ post.author.username }}
+                </a>
+                <span class="me-3"><i class="bi bi-calendar3"></i> {{ post.created_at|date:"d-M, Y" }}</span>
+
+                <span class="text-primary ms-auto fw-bold">
+                    <i class="bi bi-eye-fill"></i> {{ views_count }} {% translate "ko'rildi" %}
+                </span>
+            </div>
+
+            <!-- 3. Rasmlar Galereyasi -->
+            {% if post.images.all %}
+                <div id="postCarousel" class="carousel slide mb-4 shadow-sm rounded-4 overflow-hidden" data-bs-ride="carousel">
+                    {% if post.images.count > 1 %}
+                        <div class="carousel-indicators">
+                            {% for img in post.images.all %}
+                                <button type="button" data-bs-target="#postCarousel" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"></button>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
+                    <div class="carousel-inner bg-dark">
+                        {% for post_image in post.images.all %}
+                            <div class="carousel-item {% if forloop.first %}active{% endif %}" style="cursor: pointer;">
+                                <img src="{{ post_image.image.url }}" class="d-block w-100"
+                                     style="height: 500px; object-fit: contain;" alt="Post rasm"
+                                     onclick="bootstrap.Carousel.getInstance(document.getElementById('postCarousel')).next()">
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    {% if post.images.count > 1 %}
+                        <button class="carousel-control-prev" type="button" data-bs-target="#postCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#postCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </button>
+                    {% endif %}
+                </div>
+            {% endif %}
+
+            <!-- 4. Post Matni -->
+            <div class="post-content mb-5" style="white-space: pre-line; text-align: justify; font-size: 1.1rem; line-height: 1.8;">
+                {{ post.content }}
+            </div>
+
+            <!-- 5. Layk tugmasi -->
+            <div class="mb-5 border-top pt-4">
+                <div class="d-flex align-items-center gap-3">
+                    <a href="{% url 'like_post' post.pk %}?type=like" class="btn btn-outline-danger rounded-pill px-4 shadow-sm transition">
+                        <i class="bi bi-heart-fill me-1"></i> {{ post.likes.count }} {% translate "Layk" %}
+                    </a>
+                </div>
+            </div>
+
+            <!-- 6. Oxirgi o'qiganlar qismi -->
+            <div class="readers-section mt-5 pt-4 border-top">
+                <h6 class="fw-bold text-secondary mb-3">
+                    <i class="bi bi-people-fill me-2"></i> {% translate "Oxirgi o'qiganlar:" %}
+                </h6>
+                <div class="d-flex flex-wrap gap-2">
+                    {% for reader in readers %}
+                        {% if reader.user %}
+                            <a href="{% url 'user_public_profile' reader.user.username %}" class="text-decoration-none">
+                                <span class="badge bg-light text-dark border rounded-pill p-2 d-flex align-items-center shadow-sm reader-badge transition">
+                                    {% if reader.user.profile.avatar %}
+                                        <img src="{{ reader.user.profile.avatar.url }}" width="24" height="24" class="rounded-circle me-2 border" style="object-fit: cover;">
+                                    {% else %}
+                                        <i class="bi bi-person-circle me-2 fs-6 text-secondary"></i>
+                                    {% endif %}
+                                    <span class="fw-normal">{{ reader.user.username }}</span>
+                                </span>
+                            </a>
+                        {% endif %}
+                    {% empty %}
+                        <p class="text-muted small italic">{% translate "Hali hech kim o'qimadi." %}</p>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- 7. O'xshash postlar -->
+            {% if similar_posts %}
+            <div class="mt-5 pt-4 border-top">
+                <h5 class="fw-bold mb-4">{% translate "O'xshash postlar" %}</h5>
+                <div class="row">
+                    {% for s_post in similar_posts %}
+                        <div class="col-md-3 mb-3">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <a href="{% url 'post_detail' s_post.pk %}" class="text-decoration-none text-dark">
+                                    {% if s_post.images.first %}
+                                        <img src="{{ s_post.images.first.image.url }}" class="card-img-top" style="height: 120px; object-fit: cover;">
+                                    {% endif %}
+                                    <div class="card-body p-2">
+                                        <p class="card-title small fw-bold mb-0">{{ s_post.title|truncatechars:30 }}</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- 8. Orqaga qaytish -->
+            <div class="mt-4 pt-3">
+                <a href="{% url 'home' %}" class="btn btn-link text-decoration-none text-secondary p-0">
+                    <i class="bi bi-arrow-left-circle-fill fs-4 me-1"></i> {% translate "Orqaga qaytish" %}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .reader-badge {
+        transition: all 0.2s ease-in-out;
+    }
+    .reader-badge:hover {
+        background-color: #e9ecef !important;
+        border-color: #0d6efd !important;
+        transform: translateY(-2px);
+    }
+    .transition {
+        transition: 0.3s;
+    }
+</style>
+{% endblock %}

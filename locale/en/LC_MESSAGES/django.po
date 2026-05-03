@@ -1,0 +1,499 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-02 10:28+0500\n"
+"PO-Revision-Date: 2026-05-01 22:45+0500\n"
+"Last-Translator: Anvar\n"
+"Language-Team: English\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: config/templates/base.html:8
+msgid "Premium Experience"
+msgstr "Premium Experience"
+
+#: config/templates/base.html:111
+msgid "Qidiruv..."
+msgstr "Search..."
+
+#: config/templates/base.html:114 config/templates/base.html:175
+msgid "Asosiy"
+msgstr "Home"
+
+#: config/templates/base.html:123 config/templates/base.html:177
+msgid "Profil"
+msgstr "Profile"
+
+#: config/templates/base.html:124
+msgid "Post"
+msgstr "Post"
+
+#: config/templates/base.html:126
+msgid "Chiqish"
+msgstr "Logout"
+
+#: config/templates/base.html:129 config/templates/register.html:59
+msgid "Kirish"
+msgstr "Login"
+
+#: config/templates/base.html:130 config/templates/register.html:9
+msgid "Ro'yxatdan o'tish"
+msgstr "Register"
+
+#: config/templates/base.html:157
+msgid "Bugungi kunning eng qiziqarli texnologik va shaxsiy platformasi."
+msgstr "The most exciting technological and personal platform today."
+
+#: config/templates/base.html:165
+msgid "Ma'lumotlar"
+msgstr "Information"
+
+#: config/templates/base.html:167
+msgid "Bog'lanish"
+msgstr "Contact Us"
+
+#: config/templates/base.html:168 config/templates/pages/privacy.html:10
+msgid "Maxfiylik siyosati"
+msgstr "Privacy Policy"
+
+#: config/templates/base.html:169
+msgid "Foydalanish shartlari"
+msgstr "Terms of Use"
+
+#: config/templates/base.html:173
+msgid "Navigatsiya"
+msgstr "Navigation"
+
+#: config/templates/base.html:184
+msgid "Anvar tomonidan yaratildi"
+msgstr "Created by Anvar"
+
+#: config/templates/base.html:195
+msgid "Haqiqatan ham chiqmoqchimisiz?"
+msgstr "Are you sure you want to logout?"
+
+#: config/templates/base.html:197
+msgid "Yo'q"
+msgstr "No"
+
+#: config/templates/base.html:200
+msgid "Ha"
+msgstr "Yes"
+
+#: config/templates/create_post.html:12
+msgid "Yangi post yaratish"
+msgstr "Create new post"
+
+#: config/templates/create_post.html:13
+msgid "Fikrlaringiz va bir nechta rasmlaringizni ulashing"
+msgstr "Share your thoughts and upload some photos"
+
+#: config/templates/create_post.html:20
+msgid "Sarlavha"
+msgstr "Title"
+
+#: config/templates/create_post.html:22
+msgid "Post mavzusi qisqacha..."
+msgstr "Brief topic of the post..."
+
+#: config/templates/create_post.html:26
+msgid "Rasmlarni tanlang"
+msgstr "Select images"
+
+#: config/templates/create_post.html:34
+msgid "Bir nechta rasmni tanlash uchun <b>Ctrl</b> tugmasini bosib turing."
+msgstr "Hold down the <b>Ctrl</b> key to select multiple images."
+
+#: config/templates/create_post.html:40
+msgid "Post matni"
+msgstr "Post text"
+
+#: config/templates/create_post.html:42
+msgid "Bugun nimalar bo\\"
+msgstr "What happened today..."
+
+#: config/templates/create_post.html:48
+msgid "Nashr qilish"
+msgstr "Publish"
+
+#: config/templates/create_post.html:50 config/templates/edit_profile.html:39
+msgid "Bekor qilish"
+msgstr "Cancel"
+
+#: config/templates/create_post.html:84
+msgid "ta rasm tanlandi."
+msgstr "images selected."
+
+#: config/templates/delete_confirm.html:6
+msgid "Haqiqatdan ham ushbu postni o'chirmoqchimisiz?"
+msgstr "Are you sure you want to delete this post?"
+
+#: config/templates/delete_confirm.html:8
+msgid "Post nomi:"
+msgstr "Post title:"
+
+#: config/templates/delete_confirm.html:13
+msgid "Ha, o'chirilsin"
+msgstr "Yes, delete"
+
+#: config/templates/delete_confirm.html:16
+msgid "Yo'q, qaytish"
+msgstr "No, go back"
+
+#: config/templates/edit_profile.html:11
+msgid "Profilni tahrirlash"
+msgstr "Edit Profile"
+
+#: config/templates/edit_profile.html:14
+msgid "Profil rasmi (Avatar)"
+msgstr "Profile Picture (Avatar)"
+
+#: config/templates/edit_profile.html:24
+msgid "Muqova rasmi (Cover)"
+msgstr "Cover Image"
+
+#: config/templates/edit_profile.html:29
+msgid "To'liq ismingiz"
+msgstr "Your full name"
+
+#: config/templates/edit_profile.html:34
+msgid "Bio (O'zingiz haqingizda)"
+msgstr "Bio (About yourself)"
+
+#: config/templates/edit_profile.html:40
+msgid "Saqlash"
+msgstr "Save"
+
+#: config/templates/home.html:9
+msgid "Bloglar"
+msgstr "Blogs"
+
+#: config/templates/home.html:10
+msgid "Bugungi eng qiziqarli bloglar"
+msgstr "Today's most interesting blogs"
+
+#: config/templates/home.html:14
+msgid "Jami"
+msgstr "Total"
+
+#: config/templates/home.html:81
+msgid "Like bosish uchun tizimga kiring"
+msgstr "Log in to like this post"
+
+#: config/templates/home.html:88
+msgid "O'qish"
+msgstr "Read"
+
+#: config/templates/home.html:99
+msgid "Hozircha postlar mavjud emas."
+msgstr "No posts available yet."
+
+#: config/templates/home.html:101
+msgid "Birinchi postni yozish"
+msgstr "Write the first post"
+
+#: config/templates/notifications.html:9
+msgid "Bildirishnomalar"
+msgstr "Notifications"
+
+#: config/templates/notifications.html:13
+msgid "Barcha bildirishnomalarni o'chirmoqchimisiz?"
+msgstr "Do you want to delete all notifications?"
+
+#: config/templates/notifications.html:14
+msgid "Hammasini tozalash"
+msgstr "Clear all"
+
+#: config/templates/notifications.html:37
+msgid "sizning postingizga layk bosdi."
+msgstr "liked your post."
+
+#: config/templates/notifications.html:39
+msgid "profilingizda izoh qoldirdi."
+msgstr "left a comment on your profile."
+
+#: config/templates/notifications.html:42
+msgid "oldin"
+msgstr "ago"
+
+#: config/templates/notifications.html:49
+#: config/templates/search_results.html:25
+msgid "Ko'rish"
+msgstr "View"
+
+#: config/templates/notifications.html:56
+msgid "Haqiqatan ham ushbu bildirishnomani o'chirmoqchimisiz?"
+msgstr "Are you sure you want to delete this notification?"
+
+#: config/templates/notifications.html:57
+msgid "O&apos;chirish"
+msgstr "Delete"
+
+#: config/templates/notifications.html:65
+msgid "Hozircha bildirishnomalar yo'q."
+msgstr "No notifications yet."
+
+#: config/templates/pages/contact.html:8
+msgid "Biz bilan bog'laning"
+msgstr "Contact Us"
+
+#: config/templates/pages/contact.html:15
+msgid "Ismingiz"
+msgstr "Your Name"
+
+#: config/templates/pages/contact.html:16
+msgid "Ismingizni yozing..."
+msgstr "Enter your name..."
+
+#: config/templates/pages/contact.html:20
+msgid "Xabaringiz"
+msgstr "Your Message"
+
+#: config/templates/pages/contact.html:21
+msgid "Fikringizni yoki savolingizni yozing..."
+msgstr "Write your feedback or question..."
+
+#: config/templates/pages/contact.html:25
+msgid "Xabarni yuborish"
+msgstr "Send Message"
+
+#: config/templates/pages/contact.html:30
+msgid "Yoki ijtimoiy tarmoqlar orqali bog'laning:"
+msgstr "Or contact us via social media:"
+
+#: config/templates/pages/contact.html:49
+#: config/templates/pages/privacy.html:47 config/templates/pages/terms.html:48
+msgid "Asosiy sahifaga qaytish"
+msgstr "Back to Home"
+
+#: config/templates/pages/privacy.html:13 config/templates/pages/terms.html:13
+msgid "Oxirgi yangilanish: 30-Aprel, 2026-yil"
+msgstr "Last updated: April 30, 2026"
+
+#: config/templates/pages/privacy.html:17
+msgid "Ma'lumotlarni yig'ish"
+msgstr "Data Collection"
+
+#: config/templates/pages/privacy.html:19
+msgid ""
+"Biz sizning ismingiz, elektron pochtangiz va saytdagi harakatlaringiz (post "
+"ko'rish, like bosish) haqidagi ma'lumotlarni xizmat sifatini oshirish "
+"maqsadida to'playmiz."
+msgstr ""
+"We collect information about your name, email address, and site activities "
+"(post views, likes) to improve service quality."
+
+#: config/templates/pages/privacy.html:24
+msgid "Cookies (Kukilar)"
+msgstr "Cookies"
+
+#: config/templates/pages/privacy.html:26
+msgid ""
+"Saytimiz foydalanuvchi tajribasini yaxshilash va sessiyalarni boshqarish "
+"uchun 'cookies' fayllaridan foydalanadi. Siz brauzer sozlamalari orqali "
+"ularni cheklashingiz mumkin."
+msgstr ""
+"Our site uses cookies to enhance user experience and manage sessions. You "
+"can restrict them through your browser settings."
+
+#: config/templates/pages/privacy.html:31
+msgid "Uchinchi tomon xizmatlari"
+msgstr "Third-party Services"
+
+#: config/templates/pages/privacy.html:33
+msgid ""
+"Biz sizning shaxsiy ma'lumotlaringizni uchinchi tomonlarga sotmaymiz. "
+"Faqatgina qonun hujjatlarida ko'zda tutilgan hollarda yoki xizmat ko'rsatish "
+"uchun zarur bo'lgan (masalan, xabar yuborish) holatlarda foydalanishimiz "
+"mumkin."
+msgstr ""
+"We do not sell your personal information to third parties. We may only use "
+"it as required by law or for service delivery (e.g., sending messages)."
+
+#: config/templates/pages/privacy.html:39
+msgid "Ushbu siyosat bo'yicha qo'shimcha ma'lumot olish uchun biz bilan"
+msgstr "For more information about this policy, please"
+
+#: config/templates/pages/privacy.html:40
+msgid "bog'laning"
+msgstr "contact us"
+
+#: config/templates/pages/terms.html:10
+msgid "Foydalanish shartlari va qoidalar"
+msgstr "Terms and Conditions of Use"
+
+#: config/templates/pages/terms.html:17
+msgid "Umumiy qoidalar"
+msgstr "General Rules"
+
+#: config/templates/pages/terms.html:19
+msgid ""
+"Ushbu blog platformasi foydalanuvchilarga ma'lumot almashish va maqolalar "
+"chop etish imkonini beradi. Saytdan foydalanish orqali siz ushbu shartlarga "
+"rozilik bildirasiz."
+msgstr ""
+"This blog platform allows users to exchange information and publish "
+"articles. By using the site, you agree to these terms."
+
+#: config/templates/pages/terms.html:24
+msgid "Kontent va Mualliflik"
+msgstr "Content and Copyright"
+
+#: config/templates/pages/terms.html:26
+msgid ""
+"Foydalanuvchilar tomonidan yuklangan har qanday material muallifning shaxsiy "
+"javobgarligi hisoblanadi. Boshqa shaxslarning mualliflik huquqini buzuvchi "
+"yoki haqoratli kontentlarni joylashtirish taqiqlanadi."
+msgstr ""
+"Any material uploaded by users is the personal responsibility of the author. "
+"Posting content that violates the copyrights of others or is offensive is "
+"prohibited."
+
+#: config/templates/pages/terms.html:31
+msgid "Maxfiylik"
+msgstr "Confidentiality"
+
+#: config/templates/pages/terms.html:33
+msgid ""
+"Sizning shaxsiy ma'lumotlaringiz xavfsizligi biz uchun muhim. Ma'lumotlar "
+"qanday yig'ilishi haqida batafsil 'Maxfiylik siyosati' sahifasida "
+"tanishishingiz mumkin."
+msgstr ""
+"The security of your personal information is important to us. You can read "
+"more about how data is collected on the 'Privacy Policy' page."
+
+#: config/templates/pages/terms.html:39
+msgid "Savollaringiz bo'lsa,"
+msgstr "If you have any questions,"
+
+#: config/templates/pages/terms.html:40
+msgid "aloqa sahifasi"
+msgstr "contact page"
+
+#: config/templates/pages/terms.html:41
+msgid "orqali bizga murojaat qiling."
+msgstr "please reach out to us."
+
+#: config/templates/post_detail.html:18
+msgid "Haqiqatdan ham o\\"
+msgstr "Are you sure you want to delete this?"
+
+#: config/templates/post_detail.html:38
+msgid "ko'rildi"
+msgstr "views"
+
+#: config/templates/post_detail.html:82
+msgid "Layk"
+msgstr "Like"
+
+#: config/templates/post_detail.html:89
+msgid "Oxirgi o'qiganlar:"
+msgstr "Last read by:"
+
+#: config/templates/post_detail.html:96
+msgid "Hali hech kim o'qimadi."
+msgstr "No one has read this yet."
+
+#: config/templates/post_detail.html:103
+msgid "O'xshash postlar"
+msgstr "Similar posts"
+
+#: config/templates/post_detail.html:110
+msgid "Orqaga qaytish"
+msgstr "Go back"
+
+#: config/templates/profile.html:38 config/templates/profile.html:62
+msgid "Edit Profile"
+msgstr "Edit Profile"
+
+#: config/templates/profile.html:43
+msgid "Joined date"
+msgstr "Joined date"
+
+#: config/templates/profile.html:48
+msgid "Posts"
+msgstr "Posts"
+
+#: config/templates/profile.html:52
+msgid "Views"
+msgstr "Views"
+
+#: config/templates/profile.html:58
+msgid "New post"
+msgstr "New post"
+
+#: config/templates/profile.html:73
+msgid "My posts"
+msgstr "My posts"
+
+#: config/templates/profile.html:110
+msgid "No posts created yet."
+msgstr "No posts created yet."
+
+#: config/templates/profile.html:119
+msgid "Comments on my profile"
+msgstr "Comments on my profile"
+
+#: config/templates/profile.html:132
+msgid "ago"
+msgstr "ago"
+
+#: config/templates/profile.html:141
+msgid "No comments yet."
+msgstr "No comments yet."
+
+#: config/templates/profile.html:163
+msgid "Haqiqatan ham ushbu postni o\\"
+msgstr "Are you sure you want to delete this post?"
+
+#: config/templates/register.html:10
+msgid "Bizning hamjamiyatga qo'shiling"
+msgstr "Join our community"
+
+#: config/templates/register.html:17
+msgid "Username"
+msgstr "Username"
+
+#: config/templates/register.html:26
+msgid "Email address"
+msgstr "Email address"
+
+#: config/templates/register.html:35
+msgid "Parol"
+msgstr "Password"
+
+#: config/templates/register.html:44
+msgid "Parolni tasdiqlang"
+msgstr "Confirm password"
+
+#: config/templates/register.html:52
+msgid "Hisob yaratish"
+msgstr "Create account"
+
+#: config/templates/register.html:58
+msgid "Profilingiz bormi?"
+msgstr "Already have an account?"
+
+#: config/templates/search_results.html:9
+msgid "Natijalar:"
+msgstr "Results"
+
+#: config/templates/search_results.html:11
+msgid "Barcha postlar"
+msgstr "All posts"
+
+#: config/templates/search_results.html:35
+msgid "Hech narsa topilmadi"
+msgstr "Nothing found"
+
+#: config/templates/search_results.html:36
+msgid "Boshqa so'z bilan qidirib ko'ring yoki barcha postlarni ko'ring."
+msgstr "Try searching with another word or view all posts."
+
+#: config/templates/search_results.html:37
+msgid "Asosiyga qaytish"
+msgstr "Back to Home"

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card border-0 shadow-sm p-4 p-md-5 rounded-4">
+                <h2 class="fw-bold mb-4 text-primary">
+                    <i class="bi bi-file-earmark-text me-2"></i>{% translate "Foydalanish shartlari va qoidalar" %}
+                </h2>
+
+                <p class="text-muted">{% translate "Oxirgi yangilanish: 30-Aprel, 2026-yil" %}</p>
+                <hr class="my-4">
+
+                <section class="mb-4">
+                    <h5 class="fw-bold">1. {% translate "Umumiy qoidalar" %}</h5>
+                    <p class="text-secondary">
+                        {% translate "Ushbu blog platformasi foydalanuvchilarga ma'lumot almashish va maqolalar chop etish imkonini beradi. Saytdan foydalanish orqali siz ushbu shartlarga rozilik bildirasiz." %}
+                    </p>
+                </section>
+
+                <section class="mb-4">
+                    <h5 class="fw-bold">2. {% translate "Kontent va Mualliflik" %}</h5>
+                    <p class="text-secondary">
+                        {% translate "Foydalanuvchilar tomonidan yuklangan har qanday material muallifning shaxsiy javobgarligi hisoblanadi. Boshqa shaxslarning mualliflik huquqini buzuvchi yoki haqoratli kontentlarni joylashtirish taqiqlanadi." %}
+                    </p>
+                </section>
+
+                <section class="mb-4">
+                    <h5 class="fw-bold">3. {% translate "Maxfiylik" %}</h5>
+                    <p class="text-secondary">
+                        {% translate "Sizning shaxsiy ma'lumotlaringiz xavfsizligi biz uchun muhim. Ma'lumotlar qanday yig'ilishi haqida batafsil 'Maxfiylik siyosati' sahifasida tanishishingiz mumkin." %}
+                    </p>
+                </section>
+
+                <div class="mt-5 p-3 bg-light rounded-3">
+                    <p class="mb-0 small text-muted">
+                        {% translate "Savollaringiz bo'lsa," %}
+                        <a href="{% url 'contact' %}" class="text-decoration-none">{% translate "aloqa sahifasi" %}</a>
+                        {% translate "orqali bizga murojaat qiling." %}
+                    </p>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <a href="{% url 'home' %}" class="btn btn-link text-decoration-none text-muted">
+                    <i class="bi bi-house-door me-1"></i> {% translate "Asosiy sahifaga qaytish" %}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
